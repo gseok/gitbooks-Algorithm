@@ -8,7 +8,7 @@ Java언어적인 측면이 강한 팁을 모아두었다
 
 ```java
 int memo[][] = new int[101][101];
-        
+
 for (int i = 0; i < memo.length; i++) {
     Arrays.fill(this.memo[i], -1);  // 2중 for문이 아니라 1중 for로 초기화 가능
 }
@@ -16,9 +16,9 @@ for (int i = 0; i < memo.length; i++) {
 
 주의점: Arrays.fill은 배열의 하나의 depth만 일괄 초기화가 가능하다. 따라서 위 예제와 같이 2차원 배열일때, 2차원을 한번에 초기화는 불가능하다. 그렇더라도, 2중 for문에 비하면 성능이 좋고, 1차원 배열의 경우 한번에 초기화 해주고 있다.
 
-Java 배열 초기화 === Arrays.fill 을 기억하자
 
 
+#### Java 배열 초기화 === Arrays.fill 을 기억하자
 
 Java에서 char 초기화와 String 초기화
 
@@ -35,7 +35,7 @@ String str = "";   // (O) 빈문자열 초기화 가능
 char c = null;     // (X) null 초기화 이렇게 하면 안됨
 char c = '\u0000'; // (O) null 초기화는, unicode을 사용해야함, 다행이 null은 0000임, 싱글 쿼테이션 써야함
 char c = '';       // (X) 빈문자열 초기화 불가능
-char c = ' ';      // (O) 
+char c = ' ';      // (O) 공백 하나 띄우고 초기화는 가능
 ```
 
 
