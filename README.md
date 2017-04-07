@@ -1,3 +1,4 @@
-# My Awesome Book
+# Algorithm Book
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+알고리즘의 각 카테고리별 문제 풀이 및 정리을 한다. 온라이 문제 사이트 등에서 실전으로 문제를 제출할때의 팁을 함께 정리한다.
+
