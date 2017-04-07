@@ -2,6 +2,34 @@
 
 실제 문제를 풀때 도움이 되는 팁을 모아두었다
 
+#### 문제를 풀때 기본 form을 하나 기억하자
+
+문제를 풀때, 아래와 같은 기본 form을 하나 외워서 사용하면 좋다.
+
+* 속도 체크
+* 문제 data을 읽어오는건 BufferedReader로
+
+```java
+public class MyClass {
+    public static void main(String[] args) throws Exception {
+        // 속도체크
+        long start = System.currentTimeMillis();
+
+        // 문제 읽어오기
+        FileInputStream in = new FileInputStream("inputs/sample.txt");
+        BufferedReader  bf = new BufferedReader(new InputStreamReader(in));
+        int intValue = Integer.parseInt(bf.readLine());
+        String stringValue = bf.readLine();
+
+        // 리소스 반납
+        bf.close();
+        
+        // 속도체크 출력
+        System.out.println(System.currentTimeMillis() - start + "ms");
+    }
+}
+```
+
 
 
 #### 파일에서 문제를 읽어올때는 BufferedReader을 사용하자
@@ -13,7 +41,7 @@ BufferedReader는 버퍼에 stream data을 한번에 읽어와서 동작하기 �
 ```java
 public class MyClass {
     public static void main(String[] args) throws Exception {
-         
+
         FileInputStream in = new FileInputStream("inputs/sample.txt");
         BufferedReader  bf = new BufferedReader(new InputStreamReader(in));
         int intValue = Integer.parseInt(bf.readLine());
@@ -58,7 +86,7 @@ public class MyClass {
          } else if (memo[i][j] == FALSE) {
              // false 처리
          } 
-         
+
          // 굳이 배열 초기화를 하지 않아도 기본 생성된 초기값을 이용 할 수 있음
          if (memo[i][j] == 0) { // memo가 아직 안되어 있음. 0은 new int시 자동 초기화된 값
              // memo가 안되었을때 처리
@@ -71,8 +99,6 @@ public class MyClass {
 
 * 배열 초기화를 할 필요 없음
 * -1, 0, 1 와 같은 값이 아니어서, 코딩중 실수를 줄여준다. 명시적인 TRUE, FALSE로 구현 가능
-
-
 
 
 
