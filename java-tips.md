@@ -16,9 +16,7 @@ for (int i = 0; i < memo.length; i++) {
 
 주의점: Arrays.fill은 배열의 하나의 depth만 일괄 초기화가 가능하다. 따라서 위 예제와 같이 2차원 배열일때, 2차원을 한번에 초기화는 불가능하다. 그렇더라도, 2중 for문에 비하면 성능이 좋고, 1차원 배열의 경우 한번에 초기화 해주고 있다.
 
-
-
-#### Java 배열 초기화 === Arrays.fill 을 기억하자
+#### Java char 초기화와 String 초기화를 구별하자
 
 Java에서 char 초기화와 String 초기화
 
