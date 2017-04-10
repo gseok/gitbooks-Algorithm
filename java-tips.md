@@ -75,5 +75,14 @@ for (int x=0; x<result.length; x++)
     System.out.println(result[x]);
 ```
 
+속도비교 - 참고: [https://github.com/hughperkins/jfastparser](https://github.com/hughperkins/jfastparser)
+
+```
+Scanner: 10642 ms
+split: 715 ms
+StringTokenizer: 544ms
+JFastParser: 290ms
+```
+
 
 
