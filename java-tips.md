@@ -46,21 +46,25 @@ float float_INFINITY = Float.MAX_VALUE;
 double double_INFINITY = Double.MAX_VALUE;
 ```
 
-#### Java에서 문자열을 분리할때, split을 사용하자
+#### Java에서 문자열을 분리할때, StringTokenizer을 사용하자
 
-Java에서 문자열을 분리할때, 간단하게 `split` 함수를 사용 할 수 있다. 기존에는 `StringTokenizer`을 사용했다. 하지만 Java 공식 문서에서 `StringTokenizer`is a legacy class 라고 되어 있다.
+Java에서 문자열을 분리할때, 간단하게 `split` 함수를 사용 할 수 있다.  사용하기 편리하다 하지만 속도는 `StringTokenizer` 가 더 빠르다. 따라서, 속도가 중요할 경우에는 `StringToknizer`을 사용하는 것이 좋다.
 
-즉 Java에서 `StringTokenizer` 보다는 `split`을 쓰도록 권유 하고 있다.
+```java
+// 일반적으로 사용
+StringTokenizer st = new StringTokenizer("this is a test");
+while (st.hasMoreTokens()) {
+    System.out.println(st.nextToken());
+}
 
-아래 링크에는 `split`와 `StringTokenizer `의 속도를 비교한 부분이 있다. 확실히 split이 좀 더 빠르게 동작한다.
+// BufferedReader 와 같이 사용할때
+StringTokenizer token = new StringTokenizer(br.readLine());
 
-속도비교 참고: [http://stackoverflow.com/questions/5965767/performance-of-stringtokenizer-class-vs-split-method-in-java](http://stackoverflow.com/questions/5965767/performance-of-stringtokenizer-class-vs-split-method-in-java)
+int val1 = Integer.parseInt(token.nextToken());
+int val2 = Integer.parseInt(token.nextToken());
+```
 
-JAVA API 문서 참고: [https://docs.oracle.com/javase/8/docs/api/java/util/StringTokenizer.html](https://docs.oracle.com/javase/8/docs/api/java/util/StringTokenizer.html)
-
-
-
-split 코드 사용법, 가장 많이 사용하는 공백자르기 2개는 꼭 기억하자
+split 사용법도 알아두면 좋다. 가장 많이 사용하는 공백자르기 2개는 꼭 기억하자.
 
 ```js
 // "\\s" 는 공백(space)로 자르기 이다.
