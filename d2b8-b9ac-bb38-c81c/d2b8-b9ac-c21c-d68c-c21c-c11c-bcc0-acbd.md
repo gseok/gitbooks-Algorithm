@@ -3,8 +3,6 @@
 * 문제\(알고스팟\): [https://algospot.com/judge/problem/read/TRAVERSAL](https://algospot.com/judge/problem/read/TRAVERSAL)
 * 제한시간: 1초
 
-#### 
-
 ##### 문제에서 주의할 점
 
 * 최악의 경우
@@ -15,8 +13,6 @@
 * 전위, 중위 두가지 순회를 주고, 후위 순회를 출력하는 문제
   * depth\(level\) 100인경우, stack overflow가 되지 않도록 주의해야함.
 * 트리의 순회 순서만 잘 알고 있으면 별다른 알고리즘 없이 풀이 가능.
-
-
 
 ##### 풀이코드
 
@@ -76,10 +72,8 @@ class TraversalPost {
             answerStr += answer[i] + " ";
         }
         answerStr += answer[answer.length - 1];
-        
+
         return answerStr;
-        
-        //return Arrays.toString(this.getPostOrderList().toArray());
     }
     public ArrayList<Integer> getPostOrderList() {
         ArrayList<Integer> pOrderList = new ArrayList<Integer>();
@@ -89,42 +83,35 @@ class TraversalPost {
         if (lmidChilds.length == 0 && rmidChilds.length == 0) {
             pOrderList.add(this.rootNodeId);
             return pOrderList;
-            //return "" + this.rootNodeId + " ";
         }
         if (lmidChilds.length == 1 && rmidChilds.length == 1) {
             pOrderList.add(lmidChilds[0]);
             pOrderList.add(rmidChilds[0]);
             pOrderList.add(this.rootNodeId);
             return pOrderList;
-            //return "" + lmidChilds[0] + " "+ rmidChilds[0] + " " + this.rootNodeId + " ";
         }
         if (lmidChilds.length == 1 && rmidChilds.length == 0) {
             pOrderList.add(lmidChilds[0]);
             pOrderList.add(this.rootNodeId);
             return pOrderList;
-            //return "" + lmidChilds[0] + " " + this.rootNodeId + " ";
         }
         if (lmidChilds.length == 0 && rmidChilds.length == 1) {
             pOrderList.add(rmidChilds[0]);
             pOrderList.add(this.rootNodeId);
             return pOrderList;
-            //return "" + rmidChilds[0] + " " + this.rootNodeId + " ";
         }
 
         // left string + right string + this
-        //String answer = "";
         int [] subPreOrder;
         if (lmidChilds.length > 0) {
             subPreOrder = Arrays.copyOfRange(this.preOrderList, 1, 1 + lmidChilds.length);
             pOrderList.addAll(new TraversalPost(subPreOrder, lmidChilds).getPostOrderList());
-            //answer += new TraversalPost(subPreOrder, lmidChilds).getPostOrderList();
         }
 
         if (rmidChilds.length > 0) {
             subPreOrder = Arrays.copyOfRange(
                     this.preOrderList, 1 + lmidChilds.length, this.preOrderList.length);
             pOrderList.addAll(new TraversalPost(subPreOrder, rmidChilds).getPostOrderList());
-            //answer += new TraversalPost(subPreOrder, rmidChilds).getPostOrderList();
         }
         pOrderList.add(this.rootNodeId);
 
@@ -132,16 +119,10 @@ class TraversalPost {
     }
 }
 
-// 문제: https://algospot.com/judge/problem/read/TRAVERSAL
 public class Traversal {
-
     public static void main(String[] args) throws Exception {
-        long start = System.currentTimeMillis();
-
-        String sampleName = "pro/study/tree/inputs/TraversalSample.txt";
-        new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(new FileReader(sampleName));
-
+        InputStreamReader fr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(fr);
 
         int testCase = Integer.parseInt(br.readLine());
 
@@ -152,25 +133,21 @@ public class Traversal {
 
             StringTokenizer pst = new StringTokenizer(preOrder);
             StringTokenizer mst = new StringTokenizer(midOrder);
-            
+
             int preOrderList[] = new int[nodeNum];
             int midOrderList[] = new int[nodeNum];
-            
+
             for (int n = 0; n < nodeNum; n++) {
                 preOrderList[n] = Integer.parseInt(pst.nextToken());
                 midOrderList[n] = Integer.parseInt(mst.nextToken());
             }
-            
+
             String answer = new TraversalPost(preOrderList, midOrderList).getPostOrderListString();
             System.out.println(answer);
         }
-
         br.close();
-        System.out.println(System.currentTimeMillis() - start + "ms");
     }
-
 }
-
 ```
 
 
