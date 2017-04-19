@@ -98,6 +98,14 @@ public void bfs(int node) {
         }
     }
 }
+
+public void bfsAll() {
+    for (int i = 0; i < graph.size(); i++) {
+        if (visited[i] == false) {
+            bfs(i);
+        }
+    }
+}
 ```
 
 ###### 의사코드
