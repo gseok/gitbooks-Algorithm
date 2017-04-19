@@ -46,6 +46,7 @@ public void dfs(int node) { // node == node index
     }
 }
 
+// 그래프가 disconnected 이거나 방향그래프여서 모든 노드가 방문 불가능할때, 모든 노드 방문 시키기
 public void dfsAll() {
     for (int i = 0; i < graph.length; i++) {
         if (visited[i] == false) {
@@ -86,6 +87,7 @@ public void dfsSimple(int node) { // node == node index
     }
 }
 
+// 그래프가 disconnected 이거나 방향그래프여서 모든 노드가 방문 불가능할때, 모든 노드 방문 시키기
 public void dfsAll() {
     for (int i = 0; i < graph.length; i++) {
         if (visited[i] == false) {
