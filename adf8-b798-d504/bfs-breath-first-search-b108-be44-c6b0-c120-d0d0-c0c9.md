@@ -56,6 +56,7 @@ public void bfs(int node) {
     }
 }
 
+// 그래프가 disconnected 이거나 방향그래프여서 모든 노드가 방문 불가능할때, 모든 노드 방문 시키기
 public void bfsAll() {
     for (int i = 0; i < graph.length; i++) {
         if (visited[i] == false) {
@@ -99,6 +100,7 @@ public void bfs(int node) {
     }
 }
 
+// 그래프가 disconnected 이거나 방향그래프여서 모든 노드가 방문 불가능할때, 모든 노드 방문 시키기
 public void bfsAll() {
     for (int i = 0; i < graph.size(); i++) {
         if (visited[i] == false) {
