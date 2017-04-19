@@ -40,13 +40,13 @@ public int[][] graph;
 
 public void bfs(int node) {
     Queue<Integer> queue = new <Integer>LinkedList();
-    
+
     queue.add(node);
     visited[node] = true;
-    
+
     while (!queue.isEmpty()) {
         int visitNode = q.poll();
-        
+
         for (int i = 0; i < graph[visitNode].length; i++) {
             if (graph[visitNode][i] == 1 && visited[i] == false) {
                 queue.add(i);
@@ -65,14 +65,24 @@ public ArrayList<ArrayList<Integer>> graph;
 
 public void bfs(int node) {
     Queue<Integer> queue = new <Integer>LinkedList();
-    
+
     queue.add(node);
     visited[node] = true;
-    
+
     while (!queue.isEmpty()) {
         int visitNode = q.poll();
-        
+
         for (int connectedNode : graph.get(visitNode)) {
+            if (visited[connectedNode] == false) {
+                queue.add(connectedNode);
+                visited[connectedNode] = true;
+            }
+        }
+        
+        // 위 for문은 아래와 같은 의미이다.
+        ArrayList<Integer> connectableNodeList = graph.get(visitNode);
+        for (int i = 0; i < connectableNodeList.size(); i++) {
+            int connectedNode = connectableNodeList.get(i);
             if (visited[connectedNode] == false) {
                 queue.add(connectedNode);
                 visited[connectedNode] = true;
