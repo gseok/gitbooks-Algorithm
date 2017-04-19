@@ -51,23 +51,82 @@ public void topologicalSortDFS() {
 }
 ```
 
- 
+> 주의 사항
 
-주의 사항
+* sortedGraph 에 저장하는 node \(순서\)는 경우에 따라 reverse 해서 사용해야 할 수 도 있음.
+  * 아니면 LinkedList 을 사용해서, addFirst 로 항상 맨 앞에 추가하는 형태를 사용해서 reverse없이 바로 원하는 순서를 얻을 수 있다.
+
+
 
 **BFS 형태**
 
 ##### 필요한 요소
 
 * 그래프를 표현한 자료구조 \(ArrayList \| Array\)
+* 다음노드\(연결된 노드\) 방문 자료구조 \(Queue\)
+* 차수\(위상 - 간선\) 저장용 자료구조 \(Array\) - `e.g) int[] indegree;`
 
 ##### 코드
 
 ```java
+public static int[][] graph;
+public static int[] indegree;
+public static ArrayList<Integer> sortedGraph;
 
+
+public void bfs() {
+        Queue<Integer> q = new LinkedList<Integer>();
+
+        for (int i = 0; i < indegree.length; i++) {
+            if (indegree[i] == 0) {
+                indegree[i]--; // 큐에 다시 넣지 않도록 확실히 -값으로 만들어버림
+                sortedGraph.add(i);
+                q.add(i);
+            }
+        }
+
+        while (!q.isEmpty()) {
+            // 큐에 있는 노드는 차수 0인노드, 따라서, 해당 노드가 없어졌다고 보고, 
+            // 해당 노드와 연결된 간선과, 연결된 노드의 차수를 줄여줌.
+            int node = q.poll();
+
+            for (int n = 0; n < graph.length; n++) {
+                if (graph[node][n] == 1) { // 연결된 노드면
+                    graph[node][n] = 0; // 연결 제거
+                    indegree[n]--; // 연결된 노드의 차수 제거
+                }
+
+                if (indegree[n] == 0) {
+                    indegree[n]--;
+                    tSortBFSList.add(n);
+                    q.add(n);
+                }
+            }
+        }
+    }
+    
+public void topologicalSortBFS() {
+    // create indegree, 차수만들기
+    for (int i = 0; i < graph.length; i++) {
+        for (int j = 0; j < graph.length; j++) {
+            if (graph[i][j] == 1) {
+                indegree[j]++; // i -> j 로 가는 간선이 있다는 말은 j입장에서는 j에 대한 위상이 하나 존재한다는 뜻.
+            }
+        }
+    }
+
+    bfs();
+}
 ```
 
-#### 
+* `topological sort`의 기본 개념과 동일한 형태로 구현됨
+  * 각 노드별 차수\(위상\)을 저장
+  * `차수`\(위상\) 이 `0` 인 노드를 `순서대로 저장`, 그리고 해당 `노드를 큐에 저장`
+  * 차수 0인 노드들이 가리키고 있던\(연결된\) 노드의 차수를 줄여줘야함. \(큐에서 꺼내와서 하나씩\)
+  * 연결된 노드의 차수를 줄였을때, 해당 노드의 `차수가 0` 이면,  `순서대로 저장` & `큐에 저장`
+  * ㅇ
+
+
 
 #### 참고 문서
 
