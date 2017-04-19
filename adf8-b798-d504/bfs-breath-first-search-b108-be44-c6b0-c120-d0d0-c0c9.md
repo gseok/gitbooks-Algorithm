@@ -55,6 +55,14 @@ public void bfs(int node) {
         }
     }
 }
+
+public void bfsAll() {
+    for (int i = 0; i < graph.length; i++) {
+        if (visited[i] == false) {
+            bfs(i);
+        }
+    }
+}
 ```
 
 ##### 인접리스트
@@ -78,7 +86,7 @@ public void bfs(int node) {
                 visited[connectedNode] = true;
             }
         }
-        
+
         // 위 for문은 아래와 같은 의미이다.
         ArrayList<Integer> connectableNodeList = graph.get(visitNode);
         for (int i = 0; i < connectableNodeList.size(); i++) {
