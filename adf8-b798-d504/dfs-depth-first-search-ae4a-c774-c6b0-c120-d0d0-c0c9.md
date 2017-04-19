@@ -4,7 +4,7 @@
 
 ![](/assets/dfs-bfs.gif)
 
-[그림 출처](https://www.gitbook.com/book/gseok/algorithm/edit#)
+[그림 출처](https://namu.wiki/w/BFS)
 
 * 탐색 알고리즘
   * `그래프`나, `트리`에서 존재하는 `모든 노드를 방문`\(탐색\) 하는 방법의 하나
