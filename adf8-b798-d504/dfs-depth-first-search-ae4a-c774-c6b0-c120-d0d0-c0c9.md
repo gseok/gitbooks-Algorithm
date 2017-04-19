@@ -79,7 +79,7 @@ public void dfs(int node) { // node == node index
 public void dfsSimple(int node) { // node == node index
     visited[node] = true;
 
-    for (int connectNode; graph.get(node)) { // graph.get(node) => ArrayList가 나오고 이걸 for로 돔.
+    for (int connectNode: graph.get(node)) { // graph.get(node) => ArrayList가 나오고 이걸 for로 돔.
         if (visited[connectNode] == false) {
             dfs(connectNode);
         }
