@@ -28,6 +28,7 @@ Java로 설명한다.
 
 * 그래프를 표현한 자료구조 \(ArrayList \| Array \[\]\[\]\)
 * **방문 정보를 기록**하기위한 테이블 \(int visted\[\]\)
+* 출발 노드와, 출발 노드에서 갈 수 있는 노드를 저장하기 위한 큐, \(Queue&lt;Object&gt; queue\)
 
 ##### 코드 {#코드}
 
@@ -40,10 +41,7 @@ public int[][] graph;
 public void bfs(int node) {
 
 }
-
 ```
-
-
 
 ##### 인접리스트
 
@@ -54,7 +52,6 @@ public ArrayList<ArrayList<Integer>> graph;
 public void bfs(int node) {
 
 }
-
 ```
 
 ###### 의사코드
