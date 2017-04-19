@@ -51,7 +51,9 @@ public void topologicalSortDFS() {
 }
 ```
 
----
+ 
+
+주의 사항
 
 **BFS 형태**
 
