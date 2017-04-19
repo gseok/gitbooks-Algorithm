@@ -14,6 +14,7 @@
   * [위상정렬 \(Topological Sort\) 알고리즘](adf8-b798-d504/c704-c0c1-c815-b82c-topological-sort-c54c-ace0-b9ac-c998.md)
 * [그래프 문제](adf8-b798-d504-bb38-c81c.md)
   * [신호 라우팅](adf8-b798-d504-bb38-c81c/c2e0-d638-b77c-c6b0-d305.md)
+  * [고대어 사전](adf8-b798-d504-bb38-c81c/ace0-b300-c5b4-c0ac-c804.md)
 * [트리 알고리즘](d2b8-b9ac-c54c-ace0-b9ac-c998.md)
   * [이진 트리와, 트리 순회](d2b8-b9ac-c54c-ace0-b9ac-c998/d2b8-b9ac-c21c-d68c.md)
 * [트리 문제](d2b8-b9ac-bb38-c81c.md)
