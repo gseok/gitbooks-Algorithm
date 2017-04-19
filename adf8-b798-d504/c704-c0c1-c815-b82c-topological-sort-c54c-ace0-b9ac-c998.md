@@ -18,12 +18,37 @@ Java로 설명한다.
 
 ##### 필요한 요소
 
-* 그래프를 표현한 자료구조 \(ArrayList \| Array\)
+* 그래프를 표현한 자료구조 \(ArrayList \| Array\) - e.g\) `int [][] graph`
+* 방문 체크 자료구조 \(int\[\] visited\) - e.g\) `int [] visited`
+* 위상으로 정렬된 노드를 저장할 자료 구조 \(ArrayList, Array\) - e.g\) `ArrayList<Integer> sortedGraph`
 
 ##### 코드
 
 ```java
+public static int[] visited;
+public static int[][] graph;
+public static ArrayList<Integer> sortedGraph;
 
+public void dfs(int node) {
+    visited[node] = 1;
+
+    for (int i = 0; i < graph[node].length; i++) {
+        if (graph[node][i] == 1 && visited[i] == 0) {
+            dfs(i);
+        }
+    }
+
+    // save topological sort
+    sortedGraph.add(node);
+}
+
+public void topologicalSortDFS() {
+    for (int i = 0; i < graph.length; i++) {
+        if (visited[i] == 0) {
+            dfs(i);
+        }
+    }
+}
 ```
 
 ---
