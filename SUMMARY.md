@@ -7,6 +7,7 @@
   * [Java char 초기화와 String 초기화를 구별하자](java-tips/java-char-cd08-ae30-d654-c640-string-cd08-ae30-d654-b97c-ad6c-bcc4-d558-c790.md)
   * [Java 어떤 Type의 Max 값을 설정할때는, 해당 Type의 MAX\_VALUE을 사용하자](java-tips/java-c5b4-b5a4-type-c758-max-ac12-c744-c124-c815-d560-b54c-b2942c-d574-b2f9-type-c758-max-value-c744-c0ac-c6a9-d558-c790.md)
   * [Java에서 문자열을 분리할때, StringTokenizer을 사용하자](java-tips/javac5d0-c11c-bb38-c790-c5f4-c744-bd84-b9ac-d560-b54c2c-split-c744-c0ac-c6a9-d558-c790.md)
+  * [Java에서 Comparator 구현시 기본 제공 compare을 활용하자](java-tips/javac5d0-c11c-comparator-ad6cd604-c2dc-ae30-bcf8-c81c-acf5-compare-c744-d65c-c6a9-d558-c790.md)
 * [그래프 알고리즘](adf8-b798-d504.md)
   * [DFS \(Depth First Search\) 깊이 우선 탐색](adf8-b798-d504/dfs-depth-first-search-ae4a-c774-c6b0-c120-d0d0-c0c9.md)
   * [BFS \(Breath First Search\) 너비 우선 탐색](adf8-b798-d504/bfs-breath-first-search-b108-be44-c6b0-c120-d0d0-c0c9.md)
