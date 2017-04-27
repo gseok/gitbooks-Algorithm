@@ -21,4 +21,5 @@
   * [이진 트리와, 트리 순회](d2b8-b9ac-c54c-ace0-b9ac-c998/d2b8-b9ac-c21c-d68c.md)
 * [트리 문제](d2b8-b9ac-bb38-c81c.md)
   * [트리 순회 순서 변경](d2b8-b9ac-bb38-c81c/d2b8-b9ac-c21c-d68c-c21c-c11c-bcc0-acbd.md)
+  * [요새](d2b8-b9ac-bb38-c81c/c694-c0c8.md)
 
