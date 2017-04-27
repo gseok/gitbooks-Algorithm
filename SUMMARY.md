@@ -22,4 +22,6 @@
 * [트리 문제](d2b8-b9ac-bb38-c81c.md)
   * [트리 순회 순서 변경](d2b8-b9ac-bb38-c81c/d2b8-b9ac-c21c-d68c-c21c-c11c-bcc0-acbd.md)
   * [요새](d2b8-b9ac-bb38-c81c/c694-c0c8.md)
+* [분할정복 문제](bd84-d560-c815-bcf5-bb38-c81c.md)
+  * [쿼드 트리 뒤집기](bd84-d560-c815-bcf5-bb38-c81c/cffc-b4dc-d2b8-b9ac-b4a4-c9d1-ae30.md)
 
