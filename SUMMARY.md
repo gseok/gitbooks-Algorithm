@@ -14,6 +14,7 @@
   * [BFS \(Breath First Search\) 너비 우선 탐색](adf8-b798-d504/bfs-breath-first-search-b108-be44-c6b0-c120-d0d0-c0c9.md)
   * [다익스트라 알고리즘](adf8-b798-d504/b2e4-c775-c2a4-d2b8-b77c-c54c-ace0-b9ac-c998.md)
   * [위상정렬 \(Topological Sort\) 알고리즘](adf8-b798-d504/c704-c0c1-c815-b82c-topological-sort-c54c-ace0-b9ac-c998.md)
+  * [오일러 트레일\(Euler trail\), 오일러 회로\(Euler circuit\)](adf8-b798-d504/c624-c77c-b7ec-d2b8-b808-c77c28-euler-trail-c624-c77c-b7ec-d68c-b85c28-euler-circuit.md)
 * [그래프 문제](adf8-b798-d504-bb38-c81c.md)
   * [신호 라우팅](adf8-b798-d504-bb38-c81c/c2e0-d638-b77c-c6b0-d305.md)
   * [고대어 사전](adf8-b798-d504-bb38-c81c/ace0-b300-c5b4-c0ac-c804.md)
