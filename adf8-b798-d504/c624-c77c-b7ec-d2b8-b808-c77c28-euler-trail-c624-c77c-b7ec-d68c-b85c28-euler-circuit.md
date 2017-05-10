@@ -100,13 +100,13 @@ Java로 설명한다.
 ##### 필요한 요소
 
 * 그래프를 표현한 자료구조 \(ArrayList \| Array\) - e.g\) `int [][] graph`
-* 방문\(path\)저장 자료구조 \(LinkedList\) - e.g\) LinkedList&lt;Integer&gt;` path`
+* 방문\(path\)저장 자료구조 \(LinkedList\) - e.g\) LinkedList&lt;Integer&gt;`path`
 * 출발 Node을 check하거나, 오일러 트레일이 가능한지 체크하귀 위한 용도의 차수 저장 자료구조 - e.g\) `int [] degree`
 
 ##### 코드
 
 ```java
-static int graph[][] = new int[4][];
+static int graph[][] = new int[YOUR_GRAPH_SIZE][YOUR_GRAPH_SIZE];
 static LinkedList<Integer> path = new LinkedList<Integer>();
 
 static void dfs(int node) {
@@ -121,26 +121,6 @@ static void dfs(int node) {
     path.addFirst(node);
 }
 
-
-// 오일러 트레일 가능 여부 확인
-    static boolean checkEuler() {
-        int degree[] = new int[4];
-        int hol = 0;
-
-        for (int i = 0; i < graph.length; i++) {
-            for (int j = 0; j < graph.length; j++) {
-                degree[i] += graph[i][j];
-            }
-        }
-
-        for (int d = 0; d < degree.length; d++) {
-            if (degree[d] % 2 == 1) {
-                hol++;
-            }
-        }
-
-        return (hol == 2 || hol == 0);
-    }
 ```
 
 > 주의 사항
@@ -149,6 +129,59 @@ static void dfs(int node) {
   * LinkedList을 사용하고 addFirst을 사용하면, reverse할 필요없이 방문순서가 나온다.
 * 필요한 경우, 오일러 트레일\(또는 오일러 서킷\)이 가능한지 체크 하는 체크 함수가 필요할수 있음
 * 필요한 경우, 오일러 트레일\(또는 오일러 서킷\)이 가능한 시작, 도착 점을 알아내야 하는 경우가 필요할수 있음
+* 오일러 트레일\(또는 오일러 서킷\)의 가능 여부 혹은, 출발, 도착점을 알아야 하는경우 이론에 맞게 별도의 함수를 만들어서 사용하면 된다.
+* ```java
+  // 오일러 트레일 가능 여부 확인
+  static boolean checkEuler() {
+      int degree[] = new int[YOUR_GRAPH_SIZE];
+      int hol = 0;
+
+      for (int i = 0; i < graph.length; i++) {
+          for (int j = 0; j < graph.length; j++) {
+              degree[i] += graph[i][j];
+          }
+      }
+
+      for (int d = 0; d < degree.length; d++) {
+          if (degree[d] % 2 == 1) {
+              hol++;
+          }
+      }
+
+      // 홀수 차수가 2개 또는 0개인 경우만 오일러 트레일 가능
+      return (hol == 2 || hol == 0);
+  }
+
+  // 시작가능점 찾기
+  static ArrayList<Integer> startPossible() {
+      int degree[] = new int[YOUR_GRAPH_SIZE];
+      ArrayList<Integer> holIndex = new ArrayList<Integer>();
+      ArrayList<Integer> possibleIndex = new ArrayList<Integer>();
+
+      for (int i = 0; i < graph.length; i++) {
+          for (int j = 0; j < graph.length; j++) {
+              degree[i] += graph[i][j];
+          }
+      }
+
+      for (int d = 0; d < degree.length; d++) {
+          possibleIndex.add(d);
+          if (degree[d] % 2 == 1) {
+              holIndex.add(d);
+          }
+      }
+
+      if (holIndex.size() == 2) {
+          return holIndex;
+      }
+
+      if (holIndex.size() == 0) {
+          return possibleIndex;
+      }
+
+      return null;
+  }
+  ```
 
 
 
