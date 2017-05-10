@@ -120,7 +120,6 @@ static void dfs(int node) {
 
     path.addFirst(node);
 }
-
 ```
 
 > 주의 사항
