@@ -95,5 +95,60 @@ Java로 설명한다.
 * 인접 리스트로 구현시, 간선을 객체화 하여 구현하는 형태를 취하면 편리하다.
 * 방향이 있는 경우, 들어오는 간선, 나가는 간선을 따로 관리해야 한다.
 
+**DFS 형태**
+
+##### 필요한 요소
+
+* 그래프를 표현한 자료구조 \(ArrayList \| Array\) - e.g\) `int [][] graph`
+* 방문\(path\)저장 자료구조 \(LinkedList\) - e.g\) LinkedList&lt;Integer&gt;` path`
+* 출발 Node을 check하거나, 오일러 트레일이 가능한지 체크하귀 위한 용도의 차수 저장 자료구조 - e.g\) `int [] degree`
+
+##### 코드
+
+```java
+static int graph[][] = new int[4][];
+static LinkedList<Integer> path = new LinkedList<Integer>();
+
+static void dfs(int node) {
+    for (int i = 0; i < graph.length; i++) {
+        while (graph[node][i] != 0) {
+            graph[node][i]--;
+            graph[i][node]--;
+            dfs(i);
+        }
+    }
+
+    path.addFirst(node);
+}
+
+
+// 오일러 트레일 가능 여부 확인
+    static boolean checkEuler() {
+        int degree[] = new int[4];
+        int hol = 0;
+
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph.length; j++) {
+                degree[i] += graph[i][j];
+            }
+        }
+
+        for (int d = 0; d < degree.length; d++) {
+            if (degree[d] % 2 == 1) {
+                hol++;
+            }
+        }
+
+        return (hol == 2 || hol == 0);
+    }
+```
+
+> 주의 사항
+
+* path 에 저장하는 node \(순서\)는 reverse 하여야 방문순서가 순서대로 나온다.
+  * LinkedList을 사용하고 addFirst을 사용하면, reverse할 필요없이 방문순서가 나온다.
+* 필요한 경우, 오일러 트레일\(또는 오일러 서킷\)이 가능한지 체크 하는 체크 함수가 필요할수 있음
+* 필요한 경우, 오일러 트레일\(또는 오일러 서킷\)이 가능한 시작, 도착 점을 알아내야 하는 경우가 필요할수 있음
+
 
 
