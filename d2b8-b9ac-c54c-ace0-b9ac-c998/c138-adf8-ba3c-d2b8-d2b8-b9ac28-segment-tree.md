@@ -53,9 +53,25 @@ Java로 설명한다.
 
 ![](/assets/segmentTreeNode.png)
 
-```java
+* 문제에서 주어진 Item이 2^a승 형태가 아닌 경우 2^a 형태로 만들어야 한다. 즉 주어진 Item숫자를 가지고 가장근접한 2^a을 만들어야 한다.
+  * 예를 들어 Item의 전체 갯수가 9 인 경우, 가장 근접한 2^a는 16\(a == 4\) 이다.
+  * 주어진 숫자를 X라고 했을때,  가장 근접한 2^a 을 찾으려면, X를 log2\(X\) 로 만들면 된다.
+  * Java에는 log2가 없기 때문에 logX / log 2을 하면 log2\(X\)가 된다.
 
+```java
+public static int log2(int x) {
+    // 아래 계산의 의미
+    // 예를 들어 x == 9라고 햇을때 아래의 식은
+    // 3 < 3 + log2 < 4 를 의미한다.
+    Double result = Math.log(x) / Math.log(2);
+
+    return result.intValue() + 1;
+}
 ```
+
+위에서 설명한 a는 segment tree의 depth\(height\)가 된다.
+
+
 
 * 세그먼트 트리를 생성하는 함수
 * 세그먼트 트리를 방문\(답을 구하는\)하는 함수
