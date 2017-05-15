@@ -58,8 +58,9 @@ Java로 설명한다.
   * 주어진 숫자를 X라고 했을때,  가장 근접한 2^a 을 찾으려면, X를 log2\(X\) 로 만들면 된다.
   * Java에는 log2가 없기 때문에 logX / log 2을 하면 log2\(X\)가 된다.
 
-```java
+`a 구하기`
 
+```java
 // 2의 a승 형태로 만들기 (다시 말해서 a 구하기)
 public static int log2(int x) {
     // 아래 계산의 의미
@@ -73,6 +74,34 @@ public static int log2(int x) {
 
 * **어떤 수를 2^a 형태로 만드는 간단한 방법이 있다. 어떤 수에 4를 곱하면 된다.**
   * 왜냐하면 `2의 제곱수를 곱하여 나온 수`는 `항상 2의 제곱수`가 된다. 따라서, `2^a형태`가 된다.
+
+`트리의 크기 구하기`
+
+```java
+public static int tree[];
+
+// 2의 a승 형태로 만들기 (다시 말해서 a 구하기)
+public static int log2(int x) {
+    // 아래 계산의 의미
+    // 예를 들어 x == 9라고 햇을때 아래의 식은
+    // 3 < 3 + log2 < 4 를 의미한다.
+    Double result = Math.log(x) / Math.log(2);
+
+    return result.intValue() + 1;
+}
+
+// 트리 초기화
+public static void initTree() {
+    // 2^(a + 1) - 1
+    Double len = Math.pow(2, log2(ItemTotalNumber) + 1) - 1;
+    tree = new int[len.intValue()];
+}
+
+// 2^a 을 구하지 않고 4를 곱해서 바로 트리 초기화 하는 경우
+public static void initTree() {
+    tree = new int[ItemTotalNumber * 4];
+}
+```
 
 
 
