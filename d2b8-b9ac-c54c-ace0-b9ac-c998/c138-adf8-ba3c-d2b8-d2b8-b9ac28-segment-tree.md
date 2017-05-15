@@ -16,8 +16,6 @@
 
 **세그먼트 트리의 핵심은, 트리의 노드가 구간을 의미 \(혹은 해당 구간 만큼의 값을 의미\) 한다는 점이다.**
 
-
-
 #### 이론 핵심 요약
 
 * 어떤 구간의 값을 나타내는 알고리즘
@@ -25,18 +23,15 @@
   * 복잡도 O\(Log N\)
     * 알고리즘 자체가 logN 의 범주로 되어 있다.\(완전 이진 트리로 봤을때, 깊이는 logN이되고, left자식, right자식, 을 방문하는 형태를 취하면, 2LogN 의 복잡도가 나온다\)
 
-
-
 #### 구현 핵심 요약
 
 Java로 설명한다.
 
 ##### 필요한 요소
 
-* 그래프를 표현한 자료구조 \(ArrayList \| Array\) - e.g\) `int [][] graph`
-* 방문 체크 자료구조 \(int\[\] visited\) - e.g\) `int [] visited`
-* 위상으로 정렬된 노드를 저장할 자료 구조 \(ArrayList, Array\) - e.g\) `ArrayList<Integer> sortedGraph`
-
+* 문제에서 주어지는 item을 저장하는 자료구조 \(Array \| List\) - e.g\) `int [] items`
+* 세그먼트 트리를 표현하는 자료구조 \(Array \| HashMap\) - e.g\) `SumSegmentTree [] tree`
+* * 
 ##### 코드
 
 ```java
