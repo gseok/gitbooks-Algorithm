@@ -105,9 +105,7 @@ public static void initTree() {
 
 위에서 설명한 a는 segment tree의 depth\(height\)가 된다.
 
-곱하기 4를 하는 경우, 메모리 낭비 문제가 발생한다. 문제에 따라 적용하면된다. 
-
-
+곱하기 4를 하는 경우, 메모리 낭비 문제가 발생한다. 문제에 따라 적용하면된다.
 
 > 세그먼트 트리를 생성하는 함수
 
@@ -170,6 +168,31 @@ public static int segmentTree(int L, int R, int nodeId, int nodeL, int nodeR) {
 * nodeId: 현재 노드의 ID, 이미 tree에 해당 ID에 해당하는 node의 범위에 대한 값이 있으면 그걸 바로 리턴할때 사용
 * nodeL: 현재 노드에서 커버하고 있는 범위의 맨 왼쪽
 * nodeR: 현재 노드에서 커버하고 있는 범위의 맨 오른쪽
+
+고급
+
+> 세그먼트 트리의 Item 데이터가 변경되는 경우, 세그먼트 트리를 업데이트 하는 함수
+
+```java
+public static void update(int nodeId, int nodeL, int nodeR, int itemIndex, long itemValueDiff) {
+    // 현재 노드의 범위를 벋어나면, 업데이트 할 필요 없음
+    if (nodeL > itemIndex || nodeR < itemIndex) {
+        return;
+    } else {
+        // 포함 범위면 갱신
+        tree[nodeId] += itemValueDiff;
+        
+        // Leaf 노드가 아니면, 자식 노드 왼쪽, 오른쪽 역시 갱신
+        if (nodeL != nodeR) {
+            int mid =  (nodeL + nodeR) / 2;
+            update(node * 2, nodeL, mid, itemIndex, itemValueDiff);
+            update(node * 2 + 1, mid + 1, nodeR, itemIndex, itemValueDiff);
+        }
+    }
+}
+```
+
+
 
 참고
 
