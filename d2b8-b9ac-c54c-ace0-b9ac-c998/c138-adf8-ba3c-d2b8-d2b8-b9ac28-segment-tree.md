@@ -36,7 +36,7 @@ Java로 설명한다.
 ##### 필요한 요소
 
 * 문제에서 주어지는 Item을 저장하는 자료구조 \(Array \| List\) - e.g\) `int [] items`
-* 세그먼트 트리를 표현하는 자료구조 \(Array \| HashMap\) - e.g\) `SumSegmentTree [] tree`
+* 세그먼트 트리를 표현하는 자료구조 \(Array \| HashMap\) - e.g\) `int [] tree`
 * 세그먼트 트리의 크기를 계산하는 함수
 * 세그먼트 트리를 생성하는 함수
 * 세그먼트 트리를 방문\(답을 구하는\)하는 함수
@@ -167,13 +167,9 @@ public static int segmentTree(int L, int R, int nodeId, int nodeL, int nodeR) {
 * nodeL: 현재 노드에서 커버하고 있는 범위의 맨 왼쪽
 * nodeR: 현재 노드에서 커버하고 있는 범위의 맨 오른쪽
 
-
-
 참고
 
 [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220791986409](http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220791986409)
 
 [https://www.acmicpc.net/blog/view/9](https://www.acmicpc.net/blog/view/9)
-
-
 
