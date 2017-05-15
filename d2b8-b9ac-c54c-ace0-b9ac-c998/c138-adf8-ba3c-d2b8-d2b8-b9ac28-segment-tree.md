@@ -169,5 +169,11 @@ public static int segmentTree(int L, int R, int nodeId, int nodeL, int nodeR) {
 
 
 
+참고
+
+[http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220791986409](http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220791986409)
+
+[https://www.acmicpc.net/blog/view/9](https://www.acmicpc.net/blog/view/9)
+
 
 
