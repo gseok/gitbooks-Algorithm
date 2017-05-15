@@ -103,15 +103,66 @@ public static void initTree() {
 }
 ```
 
-
-
 위에서 설명한 a는 segment tree의 depth\(height\)가 된다.
 
-* 세그먼트 트리를 생성하는 함수
-* 세그먼트 트리를 방문\(답을 구하는\)하는 함수
+
+
+> 세그먼트 트리를 생성하는 함수
+
+트리의 생성은 간단하다, 트리 노드가 Leaf면 자기 값을 트리에 저장하고, Leaf가 아니면, 왼쪽, 오른쪽 노드 값을 계산한 이후 저장하는 형태를 취하면 된다.
 
 ```java
+// 예제에서는 sum을 가정하였음.(구간의 합을 세그먼트 트리가 저장하고 있다고 가정)
+public static int createTree(int nodeId, int L, int R) {
+    // Leaf 노드면
+    if (L == R) {
+        tree[nodeId] = itemList[L];
+        return tree[nodeId];
+    } else {
+    // Leaf 노드가 아니면, 왼쪽, 오른쪽 자식을 가져와서 계산
+    // nodeID는 level 순회 형태로 표기
+    // leftChild ID = (nodeId * 2)
+    // rightChild ID = (nodeId * 2) + 1
+        int mid = (L + R) / 2;
+        int leftTreeSum = createTree(nodeId * 2, L, mid);
+        int rightTreeSum = createTree(nodeId * 2 + 1, mid + 1, R);
 
+        tree[nodeId] = leftTreeSum + rightTreeSum;
+        return tree[nodeId];
+    }
+}
+```
+
+문제가 주어졌을때, 세그먼트 트리를 생성해두면, 이후 구간이 주어졌을때, logN 의 시간 복잡도로 답이 나오게 된다.
+
+
+
+> 세그먼트 트리를 방문\(답을 구하는\)하는 함수
+
+```java
+// 예제에서는 구간의 sum을 가정함
+public static int segmentTree(int L, int R, int nodeId, int nodeL, int nodeR) {
+    // [구하려는 범위], [현재 노드 범위], [구하려는 범위]
+    // 구하려는 범위가 현재 노드 범위 전체의 왼쪽 범위, 또는 오른쪽 범위로, 완전 벋어나져 있는 경우
+    // 현재 노드에서는 구할 수 있는 값이 없음.
+    if (R < nodeL || L > nodeR) {
+        // sum 에서 0은 null과 마찬가지로 영향을 주지 않으니깐 0 리턴
+        return 0;
+    }
+        
+    // [구하려는 ..., [현재 노드 범위], ... 범위]
+    // 현재 노드 범위 전체가, 구하려는 범위 안에 속하면, 현재 노드 범위의 값을 리턴
+    if (L <= nodeL && R >= nodeR) {
+        return tree[nodeId];
+    }
+
+    // 구하려는 범위 나머지를 구해야 함. (구하려는 범위가 현재 노드 범위에 걸쳐 있는 경우임)
+    int mid = (nodeL + nodeR)/2;
+    int sumL = segmentTree(L, R, nodeId * 2, nodeL, mid);
+    int sumR = segmentTree(L, R, (nodeId * 2) + 1, mid + 1, nodeR);
+        
+    return sumL + sumR;
+}
 ```
 
 
