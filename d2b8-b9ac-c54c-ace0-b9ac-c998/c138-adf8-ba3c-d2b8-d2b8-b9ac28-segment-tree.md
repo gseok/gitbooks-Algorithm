@@ -51,7 +51,7 @@ Java로 설명한다.
 
 결과적으로 2^3-1은\(2의 3승 -1\) == 7 이 된다.
 
-
+![](/assets/segmentTreeNode.png)
 
 ```java
 
