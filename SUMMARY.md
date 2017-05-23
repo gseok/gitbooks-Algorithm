@@ -26,8 +26,9 @@
   * [트리 순회 순서 변경](d2b8-b9ac-bb38-c81c/d2b8-b9ac-c21c-d68c-c21c-c11c-bcc0-acbd.md)
   * [요새](d2b8-b9ac-bb38-c81c/c694-c0c8.md)
   * [등산로](d2b8-b9ac-bb38-c81c/b4f1-c0b0-b85c.md)
-  * 너드인가 너드가 아닌가 2
+  * [너드인가 너드가 아닌가 2](d2b8-b9ac-bb38-c81c/b108-b4dc-c778-ac00-b108-b4dc-ac00-c544-b2cc-ac00-2.md)
 * [분할정복 문제](bd84-d560-c815-bcf5-bb38-c81c.md)
   * [쿼드 트리 뒤집기](bd84-d560-c815-bcf5-bb38-c81c/cffc-b4dc-d2b8-b9ac-b4a4-c9d1-ae30.md)
-* 자료구조 문제
+* [자료구조 문제](c790-b8cc-ad6c-c870-bb38-c81c.md)
+  * [외계 신호 분석](c790-b8cc-ad6c-c870-bb38-c81c/c678-acc4-c2e0-d638-bd84-c11d.md)
 
