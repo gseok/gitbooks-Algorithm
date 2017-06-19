@@ -9,6 +9,7 @@
   * [Java에서 문자열을 분리할때, StringTokenizer을 사용하자](java-tips/javac5d0-c11c-bb38-c790-c5f4-c744-bd84-b9ac-d560-b54c2c-split-c744-c0ac-c6a9-d558-c790.md)
   * [Java에서 Comparator 구현시 기본 제공 compare을 활용하자](java-tips/javac5d0-c11c-comparator-ad6cd604-c2dc-ae30-bcf8-c81c-acf5-compare-c744-d65c-c6a9-d558-c790.md)
   * [Java에서 int에 의미를 부여해서 사용시 사람이 읽을수 있는 변수로 선언하자](java-tips/javac5d0-c11c-int-c5d0-c758-bbf8-b97c-bd80-c5ec-d574-c11c-c0ac-c6a9-c2dc-c0ac-b78c-c774-c77d-c744-c218-c788-b294-bcc0-c218-b85c-c120-c5b8-d558-c790.md)
+  * [Java에서 ArrayList의 item 중복 제거 방법](java-tips/javac5d0-c11c-arraylist-c758-item-c911-bcf5-c81c-ac70-bc29-bc95.md)
 * [그래프 알고리즘](adf8-b798-d504.md)
   * [DFS \(Depth First Search\) 깊이 우선 탐색](adf8-b798-d504/dfs-depth-first-search-ae4a-c774-c6b0-c120-d0d0-c0c9.md)
   * [BFS \(Breath First Search\) 너비 우선 탐색](adf8-b798-d504/bfs-breath-first-search-b108-be44-c6b0-c120-d0d0-c0c9.md)
