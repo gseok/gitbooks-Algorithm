@@ -34,5 +34,5 @@
 * [자료구조 문제](c790-b8cc-ad6c-c870-bb38-c81c.md)
   * [외계 신호 분석](c790-b8cc-ad6c-c870-bb38-c81c/c678-acc4-c2e0-d638-bd84-c11d.md)
 * [동적계획법 문제](b3d9-c801-acc4-d68d-bc95-bb38-c81c.md)
-  * Sorting Game
+  * [Sorting Game](b3d9-c801-acc4-d68d-bc95-bb38-c81c/sorting-game.md)
 
