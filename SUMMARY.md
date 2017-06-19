@@ -28,7 +28,7 @@
   * [요새](d2b8-b9ac-bb38-c81c/c694-c0c8.md)
   * [등산로](d2b8-b9ac-bb38-c81c/b4f1-c0b0-b85c.md)
   * [너드인가 너드가 아닌가 2](d2b8-b9ac-bb38-c81c/b108-b4dc-c778-ac00-b108-b4dc-ac00-c544-b2cc-ac00-2.md)
-  * 삽입 정렬 뒤집기
+  * [삽입 정렬 뒤집기](d2b8-b9ac-bb38-c81c/c0bd-c785-c815-b82c-b4a4-c9d1-ae30.md)
 * [분할정복 문제](bd84-d560-c815-bcf5-bb38-c81c.md)
   * [쿼드 트리 뒤집기](bd84-d560-c815-bcf5-bb38-c81c/cffc-b4dc-d2b8-b9ac-b4a4-c9d1-ae30.md)
 * [자료구조 문제](c790-b8cc-ad6c-c870-bb38-c81c.md)
