@@ -181,7 +181,7 @@ public static void update(int nodeId, int nodeL, int nodeR, int itemIndex, long 
     } else {
         // 포함 범위면 갱신
         tree[nodeId] += itemValueDiff;
-        
+
         // Leaf 노드가 아니면, 자식 노드 왼쪽, 오른쪽 역시 갱신
         if (nodeL != nodeR) {
             int mid =  (nodeL + nodeR) / 2;
@@ -192,7 +192,28 @@ public static void update(int nodeId, int nodeL, int nodeR, int itemIndex, long 
 }
 ```
 
+> 세그먼트 트리의 Item을 범위로 한번에 업데이트 하는 함수
 
+```java
+public static int updateRangeValue(int nodeId, int nodeL, int nodeR, int L, int R) {
+    if (R < nodeL || L > nodeR) {
+        return 0;
+    }
+    
+    if (nodeL == nodeR) {
+        int diff = tree[nodeId];
+        tree[nodeId] = 0;
+        return diff;
+    }
+    
+    int mid = (nodeL + nodeR) / 2;
+    int ldiff = updateRangeValue((nodeId * 2), nodeL, mid, L, R);
+    int rdiff = updateRangeValue((nodeId * 2 + 1), mid + 1, nodeR, L, R);
+    int diff = ldiff + rdiff;
+    tree[nodeId] = tree[nodeId] - diff;
+    return diff;
+}
+```
 
 참고
 
