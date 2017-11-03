@@ -1,5 +1,3 @@
-
-
 프림 알고리즘
 
 ```java
@@ -9,7 +7,7 @@
     static class Edge implements Comparable<Edge> {
         int from, to;
         double length;
-         
+
         public Edge(int from, int to, double length) {
             super();
             this.from = from;
@@ -28,21 +26,21 @@
         ArrayList<Edge> edges = nodes.get(0);
         PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
         pq.addAll(edges);
-         
+
         // prims
         while (!pq.isEmpty()) {
             Edge edge = pq.poll();
-             
+
             // if already from, to connected then bypass
             if (connected[edge.from] && connected[edge.to]) {
                 continue;
             }
-             
+
             // edge connect
             connected[edge.from] = true;
             connected[edge.to] = true;
             sum += edge.length;
-             
+
             // next candidate edges
             ArrayList<Edge> nextEdges = nodes.get(edge.to); // edge.to is new 'from'
             pq.addAll(nextEdges);
