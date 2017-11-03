@@ -25,6 +25,7 @@
   * [세그먼트 트리\(Segment Tree\)](d2b8-b9ac-c54c-ace0-b9ac-c998/c138-adf8-ba3c-d2b8-d2b8-b9ac28-segment-tree.md)
   * [펜윅 트리](d2b8-b9ac-c54c-ace0-b9ac-c998/d39c-c705-d2b8-b9ac.md)
   * [트립 \(트리 + 힙\)](d2b8-b9ac-c54c-ace0-b9ac-c998/d2b8-b9bd-d2b8-b9ac-+-d79929.md)
+  * [최소비용신장트리](d2b8-b9ac-c54c-ace0-b9ac-c998/cd5c-c18c-be44-c6a9-c2e0-c7a5-d2b8-b9ac.md)
 * [트리 문제](d2b8-b9ac-bb38-c81c.md)
   * [트리 순회 순서 변경](d2b8-b9ac-bb38-c81c/d2b8-b9ac-c21c-d68c-c21c-c11c-bcc0-acbd.md)
   * [요새](d2b8-b9ac-bb38-c81c/c694-c0c8.md)
