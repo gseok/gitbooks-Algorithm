@@ -282,6 +282,24 @@ public static void updateRange(int nodeId, int nodeL, int nodeR, int L, int R, i
 }
 ```
 
+> 세그먼트 트리에서 N번째 item이 들어있는 index 찾기
+
+```java
+    public static int findN(int nodeId, int nodeL, int nodeR, int N) {
+        if (nodeL == nodeR) {
+            return nodeL;
+        }
+        int mid = (nodeL + nodeR) / 2;
+        int l = queryTree(nodeId * 2, nodeL, mid, nodeL, mid);
+        if (l >= N) {
+            return findN(nodeId * 2, nodeL, mid, N);
+        } else {
+            int newN = N - l;
+            return findN(nodeId * 2 + 1, mid + 1, nodeR, newN);
+        }
+    }
+```
+
 참고
 
 [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220791986409](http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220791986409)
