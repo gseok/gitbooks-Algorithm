@@ -199,13 +199,13 @@ public static int updateRangeValue(int nodeId, int nodeL, int nodeR, int L, int 
     if (R < nodeL || L > nodeR) {
         return 0;
     }
-    
+
     if (nodeL == nodeR) {
         int diff = tree[nodeId];
         tree[nodeId] = 0;
         return diff;
     }
-    
+
     int mid = (nodeL + nodeR) / 2;
     int ldiff = updateRangeValue((nodeId * 2), nodeL, mid, L, R);
     int rdiff = updateRangeValue((nodeId * 2 + 1), mid + 1, nodeR, L, R);
@@ -214,6 +214,75 @@ public static int updateRangeValue(int nodeId, int nodeL, int nodeR, int L, int 
     return diff;
 }
 ```
+
+> 세그먼트 트리를 Lazy Propagation 하는 방법
+
+```java
+// tree와 동일한 크기의 lazy 배이 있어야 합니다.
+public static int lazy [] = new int [ItemTotalNumber * 4];
+
+public static void updateLazy(int nodeId, int start, int end) {
+    // 업데이트할 부분이 있으면
+    if (lazy[nodeId] != 0) {
+        // 한번에 tree에다가 lazy 업데이트 해야 하는 부분을 실제 업데이트 합니다.
+        tree[nodeId] += (end - start + 1) * lazy[nodeId];
+
+        // leaf노드가 아니면, lazy 업데이트 정보를 propagation합니다.
+        if (start != end) {
+            lazy[nodeId * 2] += lazy[nodeId];
+            lazy[nodeId * 2 + 1] += lazy[nodeId];
+        }
+           
+        // 현재 lazy에 해당하는 node는 업데이트 했으니깐 재초기화 합니다.
+        lazy[nodeId] = 0;
+    }
+}
+ 
+ 
+// 위의 updateLazy을 호출하는 함수는 query와 updateRange가 됩니다.
+public static int query(int nodeId, int start, int end, int left, int right) {
+    // query할때, 아직 업데이트 안한게 있을 수 있으니, 업데이트 하고 값을 달라고 하면 됩니다.
+    updateLazy(nodeId, start, end);
+    if (left > end || right < start) {
+        return 0;
+    }
+         
+    if (left <= start && right >= end) {
+        return tree[node];
+    }
+         
+    int mid = (start + end) / 2;
+    return query(nodeId * 2, start, mid, left, right) + query(nodeId * 2 + 1, mid + 1, end, left, right);
+}
+
+public static void updateRange(int nodeId, int start, int end, int left, int right, int diff) {
+    // 구간을 업데이트 하는 경우역시, lazy 업데이트는 현재 nodeId에 속하는 node만 딱 update하니
+    // lazy 업데이트할꺼 있으면 먼저 하라고 합니다.
+    updateLazy(nodeId, start, end);
+    if (left > end || right < start) {
+        return;
+    }
+     
+    // 실질적으로는(보통은...) query 하기전에, update을 합니다.
+    // 따라서, 현재 최상위 업데이트가 필요한 노드는 먼저 업데이트 하고,
+    // 자식 요소들을 lazy하게 업데이트 가능하게 합니다.
+    if (left <= start && right >= end) {
+        tree[nodeId] += (end - start + 1) * diff;
+        if (start != end) {
+            lazy[node * 2] += diff;
+            lazy[node * 2 + 1] += diff;
+        }
+        return;
+    }
+         
+    int mid = (start + end) / 2;
+    updateRange(nodeId * 2, start, mid, left, right, diff);
+    updateRange(nodeId * 2 + 1, mid + 1, end, left, right, diff);
+    tree[node] = tree[nodeId * 2] + tree[nodeId * 2 + 1];
+}
+```
+
+
 
 참고
 
