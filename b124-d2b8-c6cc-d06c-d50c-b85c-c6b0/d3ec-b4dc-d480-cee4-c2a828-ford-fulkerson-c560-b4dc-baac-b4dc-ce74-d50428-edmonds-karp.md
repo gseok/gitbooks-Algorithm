@@ -353,8 +353,6 @@ DFS구현상 A -&gt; B -&gt; C에서 막히고, A -&gt; C -&gt; B -&gt; D의 경
 
 시간복잡도가 결국, O\(V+E\)F 형태가 됩니다.
 
-
-
 #### 에드몬드-카프로 포드-풀커슨 최악을 생각해보기
 
 에드몬드-카프는, 포드-풀커슨 알고리즘과 전체 로직은 모두 동일하지만, 경로를 찾는 부분만 BFS형태를 취하게 됩니다.
@@ -375,8 +373,6 @@ DFS구현상 A -&gt; B -&gt; C에서 막히고, A -&gt; C -&gt; B -&gt; D의 경
 
 보다싶인 에드몬드-카프 방식\(BFS\)로 탐색을 하면, flow보다는 edge에 영향을 받게 됩니다. 따라서 flow에 영향을 받는 포드-풀커슨과 달리 시간복잡도가, O\(VE^2\) 형태가 됩니다.
 
-
-
 #### 이론 핵심 요약
 
 * Source\(시작점\) → Sink\(도착점\) 으로**동시에 보낼 수 있는**,**데이터나 사물의 최대 양**을 구하는 알고리즘
@@ -386,24 +382,37 @@ DFS구현상 A -&gt; B -&gt; C에서 막히고, A -&gt; C -&gt; B -&gt; D의 경
 * 주의
   * 일부 블로그 설명에서, 포드-풀커슨의 문제점 때문에 '에드몬드카프'가 좋다고 되어 있는데, 무조건 좋은게 아니라 문제에 따라서 취사 선택해야합니다!
   * 문제에 Flow값이 적고, Edge가 많으면 오히려 에드몬드카프가 더 느릴 수 있습니다.
-* 알고리즘 핵심
+* 알고리즘 핵심  
   1. **Source에서 Sink로 가는 경로를 하나 찾습니다. \(정식 용어로, 증가경로 augmenting path\)**
 
-  2. **찾아낸 경로에 보낼 수 있는 최대 flow을 찾는다.**
+  1. **찾아낸 경로에 보낼 수 있는 최대 flow을 찾는다.**
 
-  3. **찾아낸 경로에, 찾아낸 최대 flow을 흘려보낸다. \(사용한다.\)**
+  2. **찾아낸 경로에, 찾아낸 최대 flow을 흘려보낸다. \(사용한다.\)**
 
-  4. **Source -&gt; Sink 경로를 찾지 못할때 까지 반복한다.**
-
-
+  3. **Source -&gt; Sink 경로를 찾지 못할때 까지 반복한다.**
 
 #### 구현 핵심 요약
 
 Java로 설명한다
 
+##### 필요한 요소
+
+* 그래프를 표현한 자료구조 \(LinkedList \| ArrayList \| Array\[\]\[\]\)
+* path을 저장하기위한 자료구조 \(Array\[\]\)
+* edge\(간선\)의 정보를 저장하기 위한 자료구조
+  * capacity \(Array\[\]\[\]\)
+  * flow \(Array\[\]\[\]\)
+* dfs에서 방문 정보를 확인하기 위한 자료구조 \(Array\[\]\)
+
 ##### 코드
 
 ```java
+    public static int capacity[][];
+    public static int flow[][];
+    public static int path[]; // 
+    public static boolean visited[];
+    public static LinkedList<Integer> graph[];
+    
     public static boolean dfs(int start) {
         if (start == Sink) {
             return true;
@@ -414,7 +423,7 @@ Java로 설명한다
         for (int next: nexts) {
             if ( !visited[next] && capacity[start][next] - flow[start][next] > 0) {
                 path[next] = start;
-                 
+
                 if (dfs(next)) { // 경로를 끝까지 찾으면 탈출, 아니면, 끝까지 찾기 재시도
                     return true;
                 }
@@ -422,7 +431,7 @@ Java로 설명한다
         }
         return false;
     }
-    
+
     public static boolean bfs() {
         Arrays.fill(path, -1);
         Queue<Integer> q = new LinkedList<Integer>();
@@ -438,7 +447,7 @@ Java로 설명한다
                     q.add(next);
 
                     if (next == Sink) {
-                    	break;
+                        break;
                     }
                 }
             }
@@ -447,29 +456,31 @@ Java로 설명한다
         if (path[Sink] == -1) {
             return false;
         }
-        
+
         return true;
     }
-    
+
     // O(VE^2)
     public static int EdmondsKarp() {
         int total = 0;
         while (bfs()) {
+            // flow값 찾기
             int flowNum = Integer.MAX_VALUE;
             for(int i = Sink; i != Source; i = path[i]) {
-            	int from = path[i];
-            	int to = i;
+                int from = path[i];
+                int to = i;
                 flowNum = Math.min(flowNum, (capacity[from][to]) - flow[from][to]);
             }
 
+            // flow흘려 보내기, 역방향도 반드시!!!!
             for(int i = Sink; i != Source; i = path[i]) {
-            	int from = path[i];
-            	int to = i;
-            	
-            	flow[from][to] += flowNum;
-            	flow[to][from] -= flowNum;
+                int from = path[i];
+                int to = i;
+
+                flow[from][to] += flowNum;
+                flow[to][from] -= flowNum;
             }
-             
+
             total += flowNum;
         }
         return total;
@@ -479,23 +490,23 @@ Java로 설명한다
     public static int FordFulkerson() {
         int total = 0;
         while (dfs(Source)) { // dfs로 경로 찾기(증가경로), 경로가 더이상 없으면 종료임.
-        	// 찾은 경로에서 차단 간선 찾기 min (capacity[u][v] - flow[u][v])
+            // 찾은 경로에서 차단 간선 찾기 min (capacity[u][v] - flow[u][v])
             // 결국 의미는 경로에서 흘릴수 있는 최대의 유량(flow)을 찾기
             int flowNum = Integer.MAX_VALUE;
             for(int i = Sink; i != Source; i = path[i]) {
-            	int from = path[i];
-            	int to = i;
+                int from = path[i];
+                int to = i;
                 flowNum = Math.min(flowNum, (capacity[from][to]) - flow[from][to]);
             }
-            // 찾은 경로에 유량을 흘려보내기
+            // 찾은 경로에 유량을 흘려보내기, 역방향도 반드시!!!!
             for(int i = Sink; i != Source; i = path[i]) {
-            	int from = path[i];
-            	int to = i;
-            	
-            	flow[from][to] += flowNum;
-            	flow[to][from] -= flowNum;
+                int from = path[i];
+                int to = i;
+
+                flow[from][to] += flowNum;
+                flow[to][from] -= flowNum;
             }
-             
+
             total += flowNum;
 
             // 찾은 경로를 초기화해서 dfs로 경로 찾기를 Source > Sink 까지 다시 할 수 있게 함.
@@ -505,8 +516,6 @@ Java로 설명한다
         return total;
     }
 ```
-
-
 
 
 
