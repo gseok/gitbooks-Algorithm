@@ -199,14 +199,16 @@ S → C → F → E → T 로 1
 * **증가경로: S → C → F → E → A → D → T**
 * 경로의 각 부분은 아래와 같이 됩니다.
 
-  | 경로 | flow | capacty | remain-capacity |
+* | 경로 | flow | capcacity | remain capacity |
   | :--- | :--- | :--- | :--- |
-  | S → C | 4 | 5 | \(5 - 4\) = 1 |
-  | C → F | 4 | 7 | \(7 - 4\) = 3 |
-  | F → E | 0 | 1 | \(1 - 0\) = 1 |
-  | E → A | -3 | 0 | \(0 - \(-3\) = 3 |
-  | A → D | 0 | 1 | \(1 - 0\) = 1 |
-  | D → T | 0 | 3 | \(3 - 0\) = 3 |
+  | S → C | 4 | 5 | \( 5 - 4 \) = 1 |
+  | C → F | 4 | 7 | \( 7 - 4 \) = 3 |
+  | F → E | 0 | 1 | \( 1 - 0 \) = 1 |
+  | E → A | -3 | 0 | \( 0 - \( -3 \)\) = 3 |
+  | A → D | 0 | 1 | \( 1 - 0 \) = 1 |
+  | D → T | 0 | 3 | \( 3 - 0 \) = 3 |
+
+
 
 * 역방향 간선인 E → A는 3이라는 용량을 흘릴 수 있습니다.
 
@@ -412,7 +414,7 @@ Java로 설명한다
     public static int path[]; // 
     public static boolean visited[];
     public static LinkedList<Integer> graph[];
-    
+
     public static boolean dfs(int start) {
         if (start == Sink) {
             return true;
